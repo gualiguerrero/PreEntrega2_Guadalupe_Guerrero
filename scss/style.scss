@@ -1,4 +1,7 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+@import "parcials/variables";
+@import "parcials/mixin";
+
 *{
     margin: 0;
     padding: 0;
@@ -15,39 +18,48 @@
 }
 
 header{
-    background-color: #b8d3e6;
+    background-color: $color_principal;
     position: sticky;
     z-index: 10;
+    
+    h1{
+        color: #d063d8;
+        text-align: center;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 80px;
+    }
 }
 
-h1{
-    color: #d063d8;
-    text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 80px;
-}
 .titulo{
-    color: #fecea9;
+    color: $color_titulos;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size:50px ;
     grid-area: titulo;
 }
 
 .navbar{
-    background-color: #b8d3e6;
-    } 
-.navbar-nav{
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-}    
-.navbar-collapse{
-    background-color: #b8d3e6;
-}
+    background-color: $color_principal;
+    
+    .navbar-nav{
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+    }    
+    .navbar-collapse{
+        background-color: #b8d3e6;
+    }
+} 
+
 main{
     display: flex;
     animation-name: start;
     animation-duration: 2s;
+    
+    h3 {
+    color: $color_texto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30px;
+    }
 }    
 
 img{
@@ -77,28 +89,23 @@ img{
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-    }
-h3 {
-    color: black;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 30px;
-    }
-
-p{
-    color: black;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}    
-legend{
-    font-size: 15px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+        
+        legend{
+        font-size: 15px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }   
 }
 
+
+p{
+    color: $color_texto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}    
+
+
 .buttoninsta{
-    background-color: #ecc6ee;
-    border-color: #b8d3e6;
+    @include button(#ecc6ee, $color_principal, 150px, 50px);
     border-radius: 5%; 
-    width: 150px;
-    height: 50px;
     grid-area: boton;
 }
 
@@ -108,10 +115,7 @@ legend{
 }
 
 .ver{
-    background-color: #b8d3e6;
-    border-color:#ecc6ee;
-    width: 30%;
-    height: 30px;
+    @include button($color_principal, #ecc6ee, 30%, 30px);
 }
 .ver:hover{
     background-color: #8ac1e8;
@@ -119,10 +123,8 @@ legend{
     
 }
 .info{
-    background-color: #b8d3e6;
-    border-color:#ecc6ee;
-    width: 80%;
-    height: 30px;
+    @include button($color_principal, #ecc6ee, 100px, 30px);
+    
 }
 .info:hover{
     background-color: #8ac1e8;
@@ -131,10 +133,7 @@ legend{
     height: 30px;
 }
 .button_enviar{
-    background-color: #ecc6ee;
-    border-color: #b8d3e6;
-    width: 100px;
-    height: 30px;
+    @include button( #ecc6ee, $color_principal, 100px, 30px);
     grid-area: boton;
     align-self: center;
 }
@@ -144,35 +143,36 @@ legend{
     border-color: #b8d3e6; 
 }
 
-.redes {
-    display: flex;
-    text-decoration: none;
-    list-style: none;
-    width: 100%;
-    height: 80px;
-    align-items: center;
-    justify-content: end;
-    }
 
 
 a{
-    color: black;
+    color: $color_texto;
     font-size: 30px;
     margin: 5px ;
     
 } 
 
 #insta{
-    color: black;
+    color: $color_texto;
     font-size: 20px;
     text-decoration: none;
 }
 
 
 footer{
-    background-color: #b8d3e6;
+    background-color: $color_principal;
     grid-area: footer;
 
+
+    .redes {
+        display: flex;
+        text-decoration: none;
+        list-style: none;
+        width: 100%;
+        height: 80px;
+        align-items: center;
+        justify-content: end;
+    }
 }
 @keyframes start {
         from{
@@ -186,16 +186,16 @@ footer{
 
 @media only screen and (max-width: 600px) {
     
-    #grillaqs{
-            display: grid;
-            grid-template-columns: 100%;
-            grid-template-rows: 100px 80px 2500px 80px;
-            grid-template-areas:"header"
-                                "nav"
-                                "main"
-                                "footer";
+#grillaqs{
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 100px 80px 2500px 80px;
+        grid-template-areas:"header"
+                            "nav"
+                            "main"
+                            "footer";
     } 
-    #grillaport{
+#grillaport{
         display: grid;
         grid-template-columns: 100%;
         grid-template-rows: 100px 80px 3500px 80px;
@@ -205,15 +205,15 @@ footer{
                             "footer";
 } 
 #grilla_ws{
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 100px 80px 1800px 80px;
-    grid-template-areas:"header"
-                        "nav"
-                        "main"
-                        "footer";
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 100px 80px 1800px 80px;
+        grid-template-areas:"header"
+                            "nav"
+                            "main"
+                            "footer";
 } 
-    .home{
+.home{
         display: grid;
         grid-template-columns: 90%;
         grid-template-rows: 45% 30% 10%;
@@ -225,7 +225,7 @@ footer{
         justify-items: center;
         align-items: center;
     }
-    .mainquiensoy{
+.mainquiensoy{
         display: grid;
         grid-template-columns: 90%;
         grid-template-rows: 3% 20% 15% 20% 18% 5%;
@@ -240,7 +240,7 @@ footer{
         justify-items: center;
         align-items: center; 
     }
-    .portafolio{
+.portafolio{
         display: grid;
         grid-template-columns: 98%;
         grid-template-rows: 2% 6% 45% 45%;
@@ -251,38 +251,43 @@ footer{
         justify-content: space-around;
         align-content: space-evenly;
         justify-items: center;
-        align-items: center; 
-    } 
-    .galeria{
+        align-items: center;
+        
+        .galeria{
         display: flex;
         flex-direction: column;
         align-items: center;
         grid-area: galeria;
     } 
-    .galeria_dos{
+        .galeria_dos{
         display: flex;
         flex-direction: column;
         align-items: center;
         grid-area: galeria_dos;
-    }       
+    }   
+    
     .fotos{
+        background-color: #ecc6ee;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        background-color: rgb(255, 249, 249);
-}
-.img_uno{
-    height: 500px;
-    width: 85%;
-}
-    p{
-        font-size: 15px;
-    }     
+    }
+
+    .img_uno{
+        height: 500px;
+        width: 85%;
+    }
     .textoport{
         width: 90%;
         grid-area: texto;
     }
+} 
+    
+    p{
+        font-size: 15px;
+    }     
+    
     .main_ws{
         display: grid;
         grid-template-columns: 90%;
@@ -294,7 +299,19 @@ footer{
         align-content: space-evenly;
         justify-items: center;
         align-items: center;
+        
+        .table{
+        display: flex;
+        justify-content: center;
+        grid-area: table;
+
     }
+        .tableflex{
+        display: flex;
+        flex-direction: column;
+    }
+    }
+
     .main_contacto{
         display: grid;
         grid-template-columns: 90%;
@@ -307,22 +324,13 @@ footer{
         justify-items: center;
         align-items: center;
     }
-    .table{
-        display: flex;
-        justify-content: center;
-        grid-area: table;
-
-    }
-    .tableflex{
-        display: flex;
-        flex-direction: column;
-    }
+    
    
     
  }
 
  @media only screen and (min-width: 600px){
-    #grillaqs{
+#grillaqs{
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 100px 80px 1500px 80px;
@@ -340,18 +348,27 @@ footer{
                         "main"
                         "footer";
 }
-    .home{
-        display: grid;
-        grid-template-columns: 35% 40%;
-        grid-template-rows: 50% 20%;
-        grid-template-areas: "frase img"
-                            "boton boton";
-        justify-content: space-evenly;
-        align-content: space-evenly;
-        justify-items: center;
-        align-items: center;
+#grilla_ws{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100px 80px 1500px 80px;
+    grid-template-areas:"header"
+                        "nav"
+                        "main"
+                        "footer";
+} 
+.home{
+    display: grid;
+    grid-template-columns: 35% 40%;
+    grid-template-rows: 50% 20%;
+    grid-template-areas: "frase img"
+                        "boton boton";
+    justify-content: space-evenly;
+    align-content: space-evenly;
+    justify-items: center;
+    align-items: center;
 }
-    .mainquiensoy{
+.mainquiensoy{
         display: grid;
         grid-template-columns: 30% 50%;
         grid-template-rows: 5% 40% 35% 5%;
@@ -365,21 +382,20 @@ footer{
         align-items: center;                    
 }
 
-    .portafolio{
-        display: grid;
-        grid-template-columns: 90%;
-        grid-template-rows: 5% 10% 35% 35%;
-        grid-template-areas: "titulo"
-                            "texto"
-                            "galeria"
-                            "galeria_dos";
-        justify-content: space-evenly;
-        align-content: space-evenly;
-        justify-items: center;
-        align-items: center;
-}
-    
-
+.portafolio{
+    display: grid;
+    grid-template-columns: 90%;
+    grid-template-rows: 5% 10% 35% 35%;
+    grid-template-areas: "titulo"
+                        "texto"
+                        "galeria"
+                        "galeria_dos";
+    justify-content: space-evenly;
+    align-content: space-evenly;
+    justify-items: center;
+    align-items: center;
+        
+        
     .fotos{
         background-color: #ecc6ee;
         width: 30%;
@@ -389,7 +405,28 @@ footer{
         justify-content: space-evenly;
         align-items: center;
 }
-.mainwork{
+    
+    .galeria{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: rgb(255, 249, 249);
+        width: 100%;
+        grid-area: galeria;
+    }   
+    .galeria_dos{
+        display: flex;
+        justify-content: space-evenly;
+        background-color: rgb(255, 249, 249);
+        width: 100%;
+        grid-area: galeria_dos;
+    }
+    .textoport{
+        width: 80%;
+        grid-area: texto;
+}
+}
+.main_ws{
     display: grid;
     grid-template-columns: 80%;
     grid-template-rows: 10% 20% 60%;
@@ -397,50 +434,15 @@ footer{
                         "texto"
                         "tabla";
     justify-content: space-evenly;
-   align-content: space-evenly;
+    align-content: space-evenly;
     justify-items: center;
     align-items: center;
-}
-.main_contacto{
-    display: grid;
-    grid-template-columns: 45% 45%;
-    grid-template-rows: 10% 70%;
-    grid-template-areas: "titulo ."
-                        "texto form"
-                        ".form";
-    justify-content: space-evenly;
-   align-content: space-evenly;
-    justify-items: center;
-    align-items: flex-start;
-}
-.galeria{
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        background-color: rgb(255, 249, 249);
-        width: 100%;
-        grid-area: galeria;
-}
-    .galeria_dos{
-        display: flex;
-        justify-content: space-evenly;
-        background-color: rgb(255, 249, 249);
-        width: 100%;
-        grid-area: galeria_dos;
-}
 
-    p{
-        font-size: 20px;
-}    
-
-    .textoport{
-        width: 80%;
-        grid-area: texto;
-}
-table{
+    table{
     background-color: #ecc6ee;
     height: 80%;
     width: 80%;
+    grid-area: tabla;
 
 }
     th{
@@ -457,9 +459,27 @@ table{
         font-size: 30px;
     }
 
+}
+.main_contacto{
+    display: grid;
+    grid-template-columns: 45% 45%;
+    grid-template-rows: 10% 70%;
+    grid-template-areas: "titulo ."
+                        "texto form"
+                        ".form";
+    justify-content: space-evenly;
+    align-content: space-evenly;
+    justify-items: center;
+    align-items: flex-start;
     
     .textocontacto{
         grid-area: texto;
     }
-  
+}
+
+    p{
+        font-size: 20px;
+}    
+
+
 }
